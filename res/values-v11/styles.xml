@@ -1,0 +1,28 @@
+<resources>
+
+    <!--
+        Base application theme for API 11+. This theme completely replaces
+        AppBaseTheme from res/values/styles.xml on API 11+ devices.
+    -->
+    <style name="AppBaseTheme" parent="@style/Theme.Sherlock.Light">
+        <!-- API 11 theme customizations can go here. -->
+    </style>
+    
+   <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:actionBarStyle">@style/Widget.AppTheme.ActionBarStyle</item>
+        <item name="android:homeAsUpIndicator">@drawable/abs__ic_ab_back_holo_dark</item>
+   		<item name="homeAsUpIndicator">@drawable/abs__ic_ab_back_holo_dark</item>
+    </style>
+
+	<style name="Widget.AppTheme.ActionBarStyle" parent="Widget.Sherlock.Light.ActionBar">
+		<item name="android:titleTextStyle">@android:color/white</item>
+		<item name="titleTextStyle">@android:color/white</item>
+		<item name="android:background">@drawable/main_header_bg</item>
+		<item name="background">@drawable/main_header_bg</item>
+	</style>
+	
+	<style name="Widget.AppTheme.ActionBar.TitleTextStyle" parent="TextAppearance.Sherlock.Widget.ActionBar.Title">
+	    <item name="android:textColor">@android:color/white</item>
+	</style>
+
+</resources>

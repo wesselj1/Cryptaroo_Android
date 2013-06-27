@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/window" >    
+<!-- 	<FrameLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/main_header_bg">
+        
+	    <TextView
+	        android:id="@+id/main_header"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:padding="3dp"
+	        android:text="Options"
+	        android:textColor="#FFFFFF"
+	        android:textSize="22sp"
+	        android:gravity="center_horizontal"
+	        android:fadingEdge="horizontal"
+	        style="?android:attr/windowTitleStyle" />
+    
+    </FrameLayout> -->
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:orientation="vertical"
+        android:background="#3D230D"
+        android:gravity="center">
+        
+        <TextView
+            android:id="@+id/optionset3_label1"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Multiplicative Shift"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"/>
+        
+        <!-- NumberPicker layout -->
+        <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="top"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginBottom="7dp">
+	        <Button
+	            android:id="@+id/optionset3_mMinusButton"
+	            android:layout_width="50dp"
+	            android:layout_height="50dp"
+	            android:text="-"
+	            android:textSize="32sp"
+	            android:background="@drawable/picker_button"
+	            android:gravity="center" />
+	        <TextView
+	            android:id="@+id/optionset3_mTextView"
+	            android:layout_width="50dp"
+	            android:layout_height="50dp"
+	            android:inputType="number"
+	            android:background="@android:color/white"
+	            android:text="1"
+	            android:textSize="32sp"
+	            android:textColor="@android:color/black"
+	            android:gravity="center"/>
+	        <Button 
+	            android:id="@+id/optionset3_mPlusButton"
+	            android:layout_width="50dp"
+	            android:layout_height="50dp"
+	            android:text="+"
+	            android:textSize="32sp"
+	            android:background="@drawable/picker_button"
+	            android:gravity="center" />       
+        </LinearLayout>
+        <!-- End NumberPicker layout -->
+        
+        <TextView
+            android:id="@+id/optionset3_label2"
+            android:padding="5dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Additive Shift"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"/>
+        
+        <!-- NumberPicker layout -->
+        <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="top"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginBottom="7dp">
+	        <Button
+	            android:id="@+id/optionset3_aMinusButton"
+	            android:layout_width="50dp"
+	            android:layout_height="50dp"
+	            android:text="-"
+	            android:textSize="32sp"
+	            android:background="@drawable/picker_button"
+	            android:gravity="center" />
+	        <TextView
+	            android:id="@+id/optionset3_aTextView"
+	            android:layout_width="50dp"
+	            android:layout_height="50dp"
+	            android:inputType="number"
+	            android:background="@android:color/white"
+	            android:text="0"
+	            android:textSize="32sp"
+	            android:textColor="@android:color/black"
+	            android:gravity="center"/>
+	        <Button
+	            android:id="@+id/optionset3_aPlusButton"
+	            android:layout_width="50dp"
+	            android:layout_height="50dp"
+	            android:text="+"
+	            android:textSize="32sp"
+	            android:background="@drawable/picker_button"
+	            android:gravity="center" />       
+        </LinearLayout>
+        <!-- End NumberPicker layout -->
+        
+	    <LinearLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal">
+	        
+	        <Button
+	            android:id="@+id/applyButton"
+	            android:layout_height="44dp"
+	            android:layout_width="136dp"
+	            android:layout_weight="0.50"
+	            android:layout_marginRight="1dp"
+	            android:text="Apply"
+	            android:textSize="16sp"
+	            android:background="@drawable/options_button"
+	            android:gravity="center"
+	            android:onClick="onSetOptionsPressed"
+	            />
+	        <Button
+	            android:id="@+id/cancelButton"
+	            android:layout_height="44dp"
+	            android:layout_width="136dp"
+	            android:layout_weight="0.50"
+	            android:text="Cancel"
+	            android:textSize="16sp"
+	            android:background="@drawable/options_button"
+	            android:layout_margin="-3dp"
+	            android:gravity="center"
+	            android:onClick="onActionButtonPressed"
+	            />
+	    </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

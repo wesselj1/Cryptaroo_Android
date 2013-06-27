@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Cryptaroo</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+
+    <string-array name="crypto_methods">
+        <item>Frequency Count</item>
+        <item>Run the Alphabet</item>
+        <item>BiGraphs</item>
+        <item>TriGraphs</item>
+        <item>NGraphs</item>
+        <item>Affine Known Plaintext Attack</item>
+        <item>Affine Encipher</item>
+        <item>Affine Decipher</item>
+        <item>Strip Off Alphabets</item>
+        <item>Poly/Mono Calculator</item>
+        <item>Vigenère Encipher</item>
+        <item>Vigenère Decipher</item>
+        <item>Autokey Cyphertext Attack</item>
+        <item>Autokey Plaintext Attack</item>
+        <item>Autokey Decipher</item>
+        <item>GCD and Inverse</item>
+    </string-array>
+
+    <string name="title_activity_crypt_text">CryptTextActivity</string>
+    <string name="title_activity_options">OptionsActivity</string>
+    <string name="title_activity_gcdand_inverse">GCDandInverseActivity</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="title_activity_help">HelpActivity</string>
+    
+    <string-array name="help_info">
+        <item>Given a set of plaintext or ciphertext Frequency Count will give a count of the number occurences for each unique letter in the text. Frequency Count will also list the 1, 2, and 3 letter words, the all the beginning and ending letters of words, a list of double letters found, and the typical frequency count for the Engish language.</item>
+        <item>Run The Alphabet will perform all 25 possible Caesar shifts on the given plaintext or ciphertext.</item>
+        <item>BiGraphs will give all the bigraphs found in the given ciphertext or plaintext along with their positions in the text.</item>
+        <item>TriGraphs will give all the trigaphs found in the given ciphertext or plaintext along with their positions in the text.</item>
+        <item>NGraphs will give all the n-sized graphs, as defined by the user, found in the given ciphertext or plaintext along with their positions in the text.</item>
+        <item>Affine Known Plaintext Attack will search for possible occurences of the known plaintext keyword within the given ciphertext using any of the possible combinations for an affine cipher. Affine Known Plaintext Attack will give the possible encryptions of the keyword along with the affine keys used to encrypt them.</item>
+        <item>Affine Encipher will perform an affine encryption on a given text using the user-specified multiplicative and additive shifts.</item>
+        <item>Affine Decipher will perform an affine decryption of a given text using the user-specified multiplicative and additive shifts.</item>
+        <item>Split Off Alphabets will strip off the user-defined number of alphabets from a given text.</item>
+        <item>IDKMYBFFJILL</item>
+        <item>Vigenere Encipher will encrypt a given text using a Vigenere cipher with the keyword provided.</item>
+        <item>Vigenere Decipher will decrypt a given Vigenere ciphertext using the keyword provided.</item>
+        <item>Autokey Cyphertext Attack will calculate the Friedman value of the ciphertext string assuming the given the keyword length.</item>
+        <item>Autokey Plaintext Attack will give the possible letters for a particular letter of a particular keyword length along with a Friedman value. The user can specify the max keyword length and the bounding Friedman values.</item>
+        <item>Autokey Decipher will decipher a given autokey ciphertext using the given keyword. You can also specify whether to use only the keyword or to use the keyword along with the message to create the key for deciphering.</item>
+        <item>GCD and Inverse will give the greatest common divisor and inverse of an integer with a given modulus.</item>
+    </string-array>
+
+</resources>

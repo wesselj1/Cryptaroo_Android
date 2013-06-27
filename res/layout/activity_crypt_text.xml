@@ -1,0 +1,89 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@android:color/black"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+<!--     <FrameLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/main_header_bg">
+        
+    <TextView
+        android:id="@+id/crypt_header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:text="Cryptaroo"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:gravity="center_horizontal"
+        android:fadingEdge="horizontal"
+        style="?android:attr/windowTitleStyle" />
+    
+    </FrameLayout> -->
+        
+    <EditText
+        android:id="@+id/inputText"
+        android:layout_width="fill_parent"
+        android:layout_height="125dp"
+        android:layout_weight="0.20"
+        android:layout_margin="7dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:hint="Input text"
+        android:gravity="top"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:inputType="textNoSuggestions|textMultiLine"
+        android:background="#E3B386" />
+     
+    <TextView
+        android:id="@+id/outputText"
+        android:layout_width="fill_parent"
+        android:layout_height="275dp"
+        android:layout_weight="0.70"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginBottom="7dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:hint="Output text"
+        android:gravity="top"
+        android:textColor="@android:color/black"
+        android:scrollbars="vertical"
+        android:maxLines="500"
+        android:textIsSelectable="true"
+        android:textSize="18sp"
+        android:background="#E3B386" />
+	    
+	
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.10"
+        android:orientation="horizontal"
+        style="@android:style/ButtonBar">
+        
+        <Button
+            android:id="@+id/optionsButton"
+            android:layout_height="fill_parent"
+            android:layout_width="156dp"
+            android:layout_weight=".50"
+            android:text="Set Options"
+            android:textSize="16sp"
+            android:onClick="onSetOptionsPressed"
+            />
+        <Button
+            android:id="@+id/actionButton"
+            android:layout_height="fill_parent"
+            android:layout_width="156dp"
+            android:layout_weight=".50"
+            android:text="Decrypt"
+            android:textSize="16sp"
+            android:onClick="onActionButtonPressed"
+            />
+    </LinearLayout>
+
+</LinearLayout>

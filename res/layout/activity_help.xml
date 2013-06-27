@@ -1,0 +1,35 @@
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/layercontainer"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@android:color/black">
+<!--    	<FrameLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/main_header_bg">
+        
+    <TextView
+        android:id="@+id/main_header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:text="Help"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:gravity="center_horizontal"
+        android:fadingEdge="horizontal"
+        style="?android:attr/windowTitleStyle" />
+    
+    </FrameLayout> -->
+  
+    <TextView
+        android:id="@+id/help_textView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="7dp"  
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:scrollbars="vertical" />
+    
+</LinearLayout>

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,7 +53,7 @@ public class OptionsDialogFragment extends DialogFragment {
 		
 		setOptionsTitleArray();
 	}
-	
+
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance)
 	{
 		View v = inflater.inflate(layoutId, container, false);
@@ -63,9 +65,12 @@ public class OptionsDialogFragment extends DialogFragment {
         
 		getUIElementsFromView(v);
 		setOptionLabels();
+		setLabelFonts();
 		
         // Watch for button clicks.
         Button applyButton = (Button)v.findViewById(R.id.applyButton);
+        applyButton.setTypeface(Consts.TYPEFACE.FairViewRegular(getActivity()));
+        applyButton.setTextSize(30);
         applyButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 // When button is clicked, call up to owning activity.
@@ -79,6 +84,8 @@ public class OptionsDialogFragment extends DialogFragment {
         });
         
         Button cancelButton = (Button)v.findViewById(R.id.cancelButton);
+        cancelButton.setTypeface(Consts.TYPEFACE.FairViewRegular(getActivity()));
+        cancelButton.setTextSize(30);
         cancelButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -148,6 +155,19 @@ public class OptionsDialogFragment extends DialogFragment {
 				}
 			});
         }
+        
+        if(plusButton != null) {
+        	plusButton.setTypeface(Consts.TYPEFACE.FairViewRegular(getActivity()));
+        }
+        if(plusButton2 != null) {
+        	plusButton2.setTypeface(Consts.TYPEFACE.FairViewRegular(getActivity()));
+        }
+        if(minusButton != null) {
+        	minusButton.setTypeface(Consts.TYPEFACE.FairViewRegular(getActivity()));
+        }
+        if(minusButton2 != null) {
+        	minusButton2.setTypeface(Consts.TYPEFACE.FairViewRegular(getActivity()));
+        }
 
         return v;
 	}
@@ -164,7 +184,7 @@ public class OptionsDialogFragment extends DialogFragment {
 //		
 //		
 //	}
-	
+
 	public void onStart()
 	{
 		super.onStart();
@@ -296,6 +316,49 @@ public class OptionsDialogFragment extends DialogFragment {
 			
 			if(cryptoMethodId == CryptoMethods.AUTOKEY_DECIPHER)
 				label2.setTextSize(12f);
+		}
+	}
+	
+	private void setLabelFonts() {
+		if(label1 != null) {
+			label1.setTypeface(Consts.TYPEFACE.FairViewSmallCaps(getActivity()));
+			label1.setTextSize(28);
+		}
+		if(label2 != null) {
+			label2.setTypeface(Consts.TYPEFACE.FairViewSmallCaps(getActivity()));
+			label2.setTextSize(28);
+		}
+		if(editText1 != null) {
+			editText1.setTypeface(Consts.TYPEFACE.FairViewRegular(getActivity()));
+			if( editText1.getInputType() != InputType.TYPE_CLASS_NUMBER) {
+				editText1.setTextSize(28);
+			}
+		}
+		if(editText2 != null) {
+			editText2.setTypeface(Consts.TYPEFACE.FairViewRegular(getActivity()));
+			if( editText2.getInputType() != InputType.TYPE_CLASS_NUMBER) {
+				editText2.setTextSize(28);
+			}
+		}
+		if(editText3 != null) {
+			editText3.setTypeface(Consts.TYPEFACE.FairViewRegular(getActivity()));
+			if( editText3.getInputType() != InputType.TYPE_CLASS_NUMBER) {
+				editText3.setTextSize(28);
+			}
+		}
+		if(multShiftTV != null) {
+			multShiftTV.setTypeface(Consts.TYPEFACE.FairViewRegular(getActivity()));
+		}
+		if(addShiftTV != null) {
+			addShiftTV.setTypeface(Consts.TYPEFACE.FairViewRegular(getActivity()));
+		}
+		if(radioGroup != null) {
+			RadioButton btn1 = (RadioButton)radioGroup.getChildAt(0);
+			btn1.setTypeface(Consts.TYPEFACE.FairViewSmallCaps(getActivity()));
+			btn1.setTextSize(28);
+			RadioButton btn2 = (RadioButton)radioGroup.getChildAt(1);
+			btn2.setTypeface(Consts.TYPEFACE.FairViewSmallCaps(getActivity()));
+			btn2.setTextSize(28);
 		}
 	}
 	

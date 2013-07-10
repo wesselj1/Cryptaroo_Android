@@ -12,6 +12,8 @@
         android:layout_height="fill_parent"
         android:listSelector="@drawable/selector"
         android:drawSelectorOnTop="true"
+        android:divider="@drawable/list_divider"
+        android:dividerHeight="1px"
         ></ListView>
     
 </LinearLayout>

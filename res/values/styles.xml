@@ -20,12 +20,13 @@
 
 	<style name="Widget.AppTheme.ActionBarStyle" parent="Widget.Sherlock.Light.ActionBar">
 		<item name="titleTextStyle">@style/Widget.AppTheme.ActionBar.TitleTextStyle</item>
-		<item name="android:background">@drawable/main_header_bg</item>F
+		<item name="android:background">@drawable/main_header_bg</item>
 		<item name="background">@drawable/main_header_bg</item>
 	</style>
 	
 	<style name="Widget.AppTheme.ActionBar.TitleTextStyle" parent="TextAppearance.Sherlock.Widget.ActionBar.Title">
 	    <item name="android:textColor">@android:color/white</item>
+	    <item name="android:textSize">30sp</item>
 	</style>
     
     <style name="CustomDialog" parent="android:Theme.Dialog">

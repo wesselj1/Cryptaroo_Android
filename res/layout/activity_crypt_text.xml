@@ -2,88 +2,158 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:background="@android:color/black"
-    android:focusable="true"
-    android:focusableInTouchMode="true">
-<!--     <FrameLayout android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/main_header_bg">
-        
-    <TextView
-        android:id="@+id/crypt_header"
+    android:layout_margin="0dp"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/inputTextLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:padding="3dp"
-        android:text="Cryptaroo"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:gravity="center_horizontal"
-        android:fadingEdge="horizontal"
-        style="?android:attr/windowTitleStyle" />
-    
-    </FrameLayout> -->
-        
-    <EditText
-        android:id="@+id/inputText"
-        android:layout_width="fill_parent"
-        android:layout_height="125dp"
-        android:layout_weight="0.20"
-        android:layout_margin="7dp"
-        android:paddingLeft="3dp"
-        android:paddingRight="3dp"
-        android:hint="Input text"
-        android:gravity="top"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:inputType="textNoSuggestions|textMultiLine"
-        android:background="#E3B386" />
-     
-    <TextView
-        android:id="@+id/outputText"
-        android:layout_width="fill_parent"
-        android:layout_height="275dp"
-        android:layout_weight="0.70"
-        android:layout_marginLeft="7dp"
-        android:layout_marginRight="7dp"
-        android:layout_marginBottom="7dp"
-        android:paddingLeft="3dp"
-        android:paddingRight="3dp"
-        android:hint="Output text"
-        android:gravity="top"
-        android:textColor="@android:color/black"
-        android:scrollbars="vertical"
-        android:maxLines="500"
-        android:textIsSelectable="true"
-        android:textSize="18sp"
-        android:background="#E3B386" />
-	    
-	
-    <LinearLayout 
+        android:layout_weight="0.2" >
+
+        <EditText
+            android:id="@+id/inputText"
+            android:layout_width="fill_parent"
+            android:layout_height="133dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="1dp"
+            android:background="@android:color/white"
+            android:drawableBottom="@drawable/textview_bottom_gradient"
+            android:drawableTop="@drawable/textview_top_gradient"
+            android:gravity="top"
+            android:hint="INPUT TEXT"
+            android:inputType="textNoSuggestions|textMultiLine"
+            android:paddingBottom="0dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:paddingTop="0dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <View
+            android:id="@+id/tv1FadingEdgeTop"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_above="@+id/inputText"
+            android:layout_marginBottom="-11dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/textview_top_gradient" />
+
+        <View
+            android:id="@+id/tv1FadingEdgeBottom"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@+id/inputText"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="-11dp"
+            android:background="@drawable/textview_bottom_gradient" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/inputText"
+            android:background="@drawable/list_divider" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/outputTextLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.10"
-        android:orientation="horizontal"
-        style="@android:style/ButtonBar">
-        
-        <Button
+        android:layout_weight="0.7" >
+
+        <TextView
+            android:id="@+id/outputText"
+            android:layout_width="fill_parent"
+            android:layout_height="330dp"
+            android:layout_below="@+id/inputText"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="1dp"
+            android:background="@android:color/white"
+            android:drawableBottom="@drawable/textview_bottom_gradient"
+            android:drawableTop="@drawable/textview_top_gradient"
+            android:gravity="top"
+            android:hint="OUTPUT TEXT"
+            android:paddingBottom="0dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:paddingTop="0dp"
+            android:scrollbars="vertical"
+            android:textColor="@android:color/black"
+            android:textIsSelectable="true"
+            android:textSize="18sp" />
+
+        <View
+            android:id="@+id/tv1FadingEdgeTop"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_above="@+id/outputText"
+            android:layout_marginBottom="-11dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/textview_top_gradient" />
+
+        <View
+            android:id="@+id/tv1FadingEdgeBottom"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@+id/outputText"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="-11dp"
+            android:background="@drawable/textview_bottom_gradient" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonBar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:layout_margin="0dp"
+        android:layout_gravity="end"
+        android:orientation="horizontal" >
+
+        <TextView
             android:id="@+id/optionsButton"
-            android:layout_height="fill_parent"
             android:layout_width="156dp"
+            android:layout_height="wrap_content"
             android:layout_weight=".50"
-            android:text="Set Options"
-            android:textSize="16sp"
+            android:background="@drawable/button_selector"
+            android:clickable="true"
+            android:gravity="center"
             android:onClick="onSetOptionsPressed"
-            />
-        <Button
-            android:id="@+id/actionButton"
+            android:text="SET OPTIONS"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/buttonDivider"
+            android:layout_width="1dp"
             android:layout_height="fill_parent"
+            android:background="#999999" />
+        
+        <TextView
+            android:id="@+id/actionButton"
             android:layout_width="156dp"
+            android:layout_height="wrap_content"
             android:layout_weight=".50"
-            android:text="Decrypt"
-            android:textSize="16sp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/button_selector"
+            android:clickable="true"
+            android:gravity="center"
             android:onClick="onActionButtonPressed"
-            />
+            android:text="Decrypt"
+            android:textSize="16sp" />
     </LinearLayout>
 
 </LinearLayout>

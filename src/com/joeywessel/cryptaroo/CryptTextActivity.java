@@ -10,11 +10,16 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.text.ClipboardManager;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,8 +32,8 @@ import com.actionbarsherlock.view.MenuItem;
 public class CryptTextActivity extends SherlockFragmentActivity {
 	
 	int cryptoMethodId;
-	Button optionsButton;
-	Button actionButton;
+	TextView optionsButton;
+	TextView actionButton;
 	EditText inputTextField;
 	TextView outputTextField;
 	Context context;
@@ -55,13 +60,22 @@ public class CryptTextActivity extends SherlockFragmentActivity {
   		ActionBar actionBar = getSupportActionBar();
   	    actionBar.setDisplayHomeAsUpEnabled(true);
   	    actionBar.setHomeButtonEnabled(true);
+
+		SpannableString s = new SpannableString("CRYPTAROO");
+		s.setSpan(new TypefaceSpan(this, "fairview_regular"), 0, s.length(),
+				Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		actionBar.setTitle(s);
 		
 		context = this;
 		
 		cryptoMethodId = getIntent().getIntExtra("cryptoMethodId", 0);
 		
-		optionsButton = (Button)findViewById(R.id.optionsButton);
-		actionButton = (Button)findViewById(R.id.actionButton);
+		optionsButton = (TextView)findViewById(R.id.optionsButton);
+		optionsButton.setTypeface(Consts.TYPEFACE.FairViewRegular(this));
+		optionsButton.setTextSize(30);
+		actionButton = (TextView)findViewById(R.id.actionButton);
+		actionButton.setTypeface(Consts.TYPEFACE.FairViewRegular(this));
+		actionButton.setTextSize(30);
 		inputTextField = (EditText)findViewById(R.id.inputText);
 		outputTextField = (TextView)findViewById(R.id.outputText);
 		outputTextField.setMovementMethod(new ScrollingMovementMethod());
@@ -284,18 +298,15 @@ public class CryptTextActivity extends SherlockFragmentActivity {
 		
 		showOptionsDialog(optionsLayoutId);
 		
-//		if( optionsLayoutId > -1 )
-//		{
-//			Intent optionsIntent = new Intent(CryptTextActivity.this, OptionsActivity.class);
-//			optionsIntent.putExtra("layoutId", optionsLayoutId);
-//			optionsIntent.putExtra("cryptoMethodId", cryptoMethodId);
-//			startActivity(optionsIntent);
-//		}
 	}
 	
 	public void onActionButtonPressed(View v)
 	{
 		SharedPreferences sharedPreferences = getSharedPreferences("MainActivity", MODE_PRIVATE);
+//		Log.v("HEIGHT", Integer.toString(v.getHeight()));
+//		
+//		LinearLayout l = (LinearLayout)findViewById(R.id.buttonBar);
+//		Log.v("HEIGHT", Integer.toString(l.getHeight()));
 		
 		outputTextField.setText("");
 		
@@ -432,20 +443,20 @@ public class CryptTextActivity extends SherlockFragmentActivity {
 	private void setActionButtonTitle()
 	{
 		if( cryptoMethodId == CryptoMethods.BIGRAPHS || cryptoMethodId == CryptoMethods.TRIGRAPHS || cryptoMethodId == CryptoMethods.NGRAPHS )
-			actionButton.setText("Get");
+			actionButton.setText("GET");
 		else if( cryptoMethodId == CryptoMethods.AFFINE_KNOWN_PLAINTEXT_ATTACK || cryptoMethodId == CryptoMethods.AUTOKEY_CYPHERTEXT_ATTACK ||
 				cryptoMethodId == CryptoMethods.AUTOKEY_PLAINTEXT_ATTACK )
-			actionButton.setText("Execute");
+			actionButton.setText("EXECUTE");
 		else if( cryptoMethodId == CryptoMethods.AFFINE_DECIPHER || cryptoMethodId == CryptoMethods.VIGENERE_DECIPHER || cryptoMethodId == CryptoMethods.AUTOKEY_DECIPHER )
-			actionButton.setText("Decipher");
+			actionButton.setText("DECIPHER");
 		else if( cryptoMethodId == CryptoMethods.AFFINE_ENCIPHER || cryptoMethodId == CryptoMethods.VIGENERE_ENCIPHER )
-			actionButton.setText("Encipher");
+			actionButton.setText("ENCIPHER");
 		else if( cryptoMethodId == CryptoMethods.FREQUENCY_COUNT || cryptoMethodId == CryptoMethods.RUN_THE_ALPHABET )
-			actionButton.setText("Run");
+			actionButton.setText("RUN");
 		else if( cryptoMethodId == CryptoMethods.POLYMONO_CACULATOR || cryptoMethodId == CryptoMethods.GCD_AND_INVERSE )
-			actionButton.setText("Calculate");
+			actionButton.setText("CALCULATE");
 		else
-			actionButton.setText("Split");
+			actionButton.setText("SPLIT");
 	}
 	
 	class ExecuteCryptMethodTask extends AsyncTask<String, Void, String>

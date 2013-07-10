@@ -5,7 +5,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
 
-    <string-array name="crypto_methods">
+    <!--
+         <string-array name="crypto_methods">
         <item>Frequency Count</item>
         <item>Run the Alphabet</item>
         <item>BiGraphs</item>
@@ -23,13 +24,33 @@
         <item>Autokey Decipher</item>
         <item>GCD and Inverse</item>
     </string-array>
+    -->
+
+    <string-array name="crypto_methods">
+        <item>FREQUENCY COUNT</item>
+        <item>RUN THE ALPHABET</item>
+        <item>BIGRAPHS</item>
+        <item>TRIGRAPHS</item>
+        <item>NGRAPHS</item>
+        <item>AFFINE KNOWN PLAINTEXT ATTACK</item>
+        <item>AFFINE ENCIPHER</item>
+        <item>AFFINE DECIPHER</item>
+        <item>STRIP OFF ALPHABETS</item>
+        <item>POLY/MONO CALCULATOR</item>
+        <item>VIGENÈRE ENCIPHER</item>
+        <item>VIGENÈRE DECIPHER</item>
+        <item>AUTOKEY CYPHERTEXT ATTACK</item>
+        <item>AUTOKEY PLAINTEXT ATTACK</item>
+        <item>AUTOKEY DECIPHER</item>
+        <item>GCD AND INVERSE</item>
+    </string-array>
 
     <string name="title_activity_crypt_text">CryptTextActivity</string>
     <string name="title_activity_options">OptionsActivity</string>
     <string name="title_activity_gcdand_inverse">GCDandInverseActivity</string>
     <string name="title_activity_about">AboutActivity</string>
     <string name="title_activity_help">HelpActivity</string>
-    
+
     <string-array name="help_info">
         <item>Given a set of plaintext or ciphertext Frequency Count will give a count of the number occurences for each unique letter in the text. Frequency Count will also list the 1, 2, and 3 letter words, the all the beginning and ending letters of words, a list of double letters found, and the typical frequency count for the Engish language.</item>
         <item>Run The Alphabet will perform all 25 possible Caesar shifts on the given plaintext or ciphertext.</item>

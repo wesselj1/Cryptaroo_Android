@@ -3,11 +3,15 @@ package com.joeywessel.cryptaroo;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
@@ -24,6 +28,13 @@ public class MainActivity extends SherlockActivity {
 		
 		// Set up default crypto options
 		setDefaultOptions();
+		
+		SpannableString s = new SpannableString("CRYPTAROO");
+		s.setSpan(new TypefaceSpan(this, "fairview_regular"), 0, s.length(),
+		        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		
+		ActionBar actionbar = getSupportActionBar();
+		actionbar.setTitle(s);
 		
 		listView = (ListView)findViewById(R.id.mainMenuListView);
 		listViewAdapter = new MenuListViewAdapter(this, R.layout.list_item, R.id.primaryTextView, getResources().getStringArray(R.array.crypto_methods));

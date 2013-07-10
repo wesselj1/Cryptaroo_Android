@@ -12,12 +12,108 @@
     android:maxHeight="20dp" >
 -->
 
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/primaryTextView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="10dp"
-    android:textColor="#DDDDDD"
-    android:textSize="20sp"
-    android:typeface="sans"
-    android:background="@drawable/list_cell_bg" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="50dp"
+    android:layout_margin="0dp"
+    android:padding="0dp"
+    android:background="@android:color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
+
+    <TextView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/primaryTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@android:color/white"
+        android:ellipsize="none"
+        android:gravity="center_vertical"
+        android:lines="1"
+        android:scrollHorizontally="false"
+        android:singleLine="true"
+        android:textColor="#555555"
+        android:textSize="38sp"
+        android:typeface="sans" />
+
+    <TextView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/primaryTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@android:color/white"
+        android:ellipsize="none"
+        android:gravity="center_vertical"
+        android:lines="1"
+        android:scrollHorizontally="false"
+        android:singleLine="true"
+        android:textColor="#E1E1E1"
+        android:textSize="38sp"
+        android:typeface="sans" />
+
+    <TextView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/primaryTextView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@android:color/white"
+        android:ellipsize="none"
+        android:gravity="center_vertical"
+        android:lines="1"
+        android:scrollHorizontally="false"
+        android:singleLine="true"
+        android:textColor="#E8E8E8"
+        android:textSize="38sp"
+        android:typeface="sans" />
+
+    <TextView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/primaryTextView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@android:color/white"
+        android:ellipsize="none"
+        android:gravity="center_vertical"
+        android:lines="1"
+        android:scrollHorizontally="false"
+        android:singleLine="true"
+        android:textColor="#EFEFEF"
+        android:textSize="38sp"
+        android:typeface="sans" />
+
+    <TextView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/primaryTextView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@android:color/white"
+        android:ellipsize="none"
+        android:gravity="center_vertical"
+        android:lines="1"
+        android:scrollHorizontally="false"
+        android:singleLine="true"
+        android:textColor="#F7F7F7"
+        android:textSize="38sp"
+        android:typeface="sans" />
+
+</LinearLayout>

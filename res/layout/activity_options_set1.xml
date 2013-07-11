@@ -82,7 +82,6 @@
                 android:layout_weight="0.50"
                 android:background="@drawable/button_selector"
                 android:gravity="center"
-                android:onClick="onActionButtonPressed"
                 android:text="CANCEL"
                 android:textSize="30sp" />
             
@@ -99,7 +98,6 @@
                 android:layout_weight="0.50"
                 android:background="@drawable/button_selector"
                 android:gravity="center"
-                android:onClick="onSetOptionsPressed"
                 android:text="APPLY"
                 android:textSize="30sp" />
         </LinearLayout>

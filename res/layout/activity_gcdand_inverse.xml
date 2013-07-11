@@ -4,39 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@android:color/white">
-<!--     <FrameLayout android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/main_header_bg">
-        
-    <TextView
-        android:id="@+id/main_header"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:padding="3dp"
-        android:text="GCD and Inverse"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:gravity="center_horizontal"
-        android:fadingEdge="horizontal"
-        style="?android:attr/windowTitleStyle" />
-    
-    </FrameLayout> -->
+    android:background="@android:color/white"
+    android:weightSum="10">
 
     <LinearLayout
-        android:layout_height="wrap_content"
         android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
         android:layout_margin="7dp"
-        android:orientation="vertical"
-        android:background="#3D230D">
+        android:orientation="vertical" >
         
 	    <TextView
-	        android:id="@+id/gcdandinverse_label"
+	        android:id="@+id/lblInverseOf"
 	        android:padding="5dp"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:text="Inverse of"
-	        android:textColor="@android:color/white"/>
+	        android:textSize="28sp"
+	        android:textColor="@android:color/darker_gray" />
 
         <EditText
             android:id="@+id/gcdandinverse_inverseoffield" 
@@ -47,19 +32,19 @@
             android:layout_marginLeft="7dp"
             android:layout_marginRight="7dp"
             android:layout_marginBottom="7dp"
-            android:layout_weight="0.50"
-            android:textSize="20sp"
+            android:textSize="38sp"
             android:padding="2dp"
             android:gravity="center_vertical"
-            android:background="#E3B386"/>
+            android:background="#EEEEEE"/>
         
         <TextView
-	        android:id="@+id/gcdandinverse_label2"
+	        android:id="@+id/lblMod"
 	        android:padding="5dp"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:text="Mod"
-	        android:textColor="@android:color/white"/>
+	        android:text="Modulus"
+	        android:textSize="28sp"
+	        android:textColor="@android:color/darker_gray" />
 
         <EditText
             android:id="@+id/gcdandinverse_modfield" 
@@ -70,21 +55,21 @@
             android:layout_marginLeft="7dp"
             android:layout_marginRight="7dp"
             android:layout_marginBottom="7dp"
-            android:layout_weight="0.50"
-            android:textSize="20sp"
+            android:textSize="38sp"
             android:padding="2dp"
             android:gravity="center_vertical"
-            android:background="#E3B386"/>
+            android:background="#EEEEEE"/>
         
         
        	<TextView
-	        android:id="@+id/gcdandinverse_label3"
+	        android:id="@+id/lblGCD"
 	        android:padding="5dp"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:text="GCD"
-	        android:textColor="@android:color/white"
-	        android:gravity="right"/>
+	        android:gravity="right"
+	        android:textSize="28sp"
+	        android:textColor="@android:color/darker_gray" />
 
         <TextView
             android:id="@+id/gcdandinverse_gcdfield" 
@@ -94,21 +79,22 @@
             android:layout_marginLeft="7dp"
             android:layout_marginRight="7dp"
             android:layout_marginBottom="7dp"
-            android:layout_weight="0.50"
-            android:textSize="20sp"
+            android:textSize="38sp"
             android:textColor="@android:color/black"
             android:padding="2dp"
             android:layout_gravity="right"
-            android:background="#E3B386" />
+            android:gravity="center_vertical"
+            android:background="#EEEEEE" />
         
         <TextView
-	        android:id="@+id/gcdandinverse_label4"
+	        android:id="@+id/lblInverse"
 	        android:padding="5dp"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:text="Inverse"
-	        android:textColor="@android:color/white" 
-	        android:gravity="right"/>
+	        android:text="Inverse" 
+	        android:gravity="right"
+	        android:textSize="28sp"
+	        android:textColor="@android:color/darker_gray" />
 
         <TextView
             android:id="@+id/gcdandinverse_inversefield" 
@@ -118,22 +104,24 @@
             android:layout_marginLeft="7dp"
             android:layout_marginRight="7dp"
             android:layout_marginBottom="7dp"
-            android:layout_weight="0.50"
-            android:textSize="20sp"
+            android:textSize="38sp"
             android:textColor="@android:color/black"
             android:padding="2dp"
             android:layout_gravity="right"
-            android:background="#E3B386" />
-        
-        <Button 
-	        android:layout_height="50dp"
-	        android:layout_width="fill_parent"
-	        android:layout_marginTop="5dp"
-	        android:text="Calculate"
-	        android:textSize="26sp"
-	        android:background="@drawable/picker_button"
-	        android:onClick="onCalculateButtonPressed" />
+            android:gravity="center_vertical"
+            android:background="#EEEEEE" />
 
     </LinearLayout>
+    
+    <Button
+        android:id="@+id/gcdandinverse_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/picker_button"
+        android:onClick="onCalculateButtonPressed"
+        android:text="Calculate"
+        android:textSize="30sp"
+        android:textColor="@android:color/white" />
 
 </LinearLayout>

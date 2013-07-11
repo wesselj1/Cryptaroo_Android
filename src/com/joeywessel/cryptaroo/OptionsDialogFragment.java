@@ -2,6 +2,7 @@ package com.joeywessel.cryptaroo;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.text.InputType;
@@ -31,6 +32,8 @@ public class OptionsDialogFragment extends DialogFragment {
 	TextView label1;
 	TextView label2;
 	RadioGroup radioGroup;
+	TextView helpHeader;
+	Button btnOkay;
 	
 	static OptionsDialogFragment newInstance(int cryptoMethodId, int optionsLayoutId)
 	{
@@ -44,6 +47,10 @@ public class OptionsDialogFragment extends DialogFragment {
 		return fragment;
 	}
 	
+	
+	/*
+	 * Lifecycle Methods
+	 */
 	public void onCreate(Bundle savedInstance)
 	{
 		super.onCreate(savedInstance);
@@ -53,22 +60,101 @@ public class OptionsDialogFragment extends DialogFragment {
 		
 		setOptionsTitleArray();
 	}
+	
+	public void onStart()
+	{
+		super.onStart();
+		restoreOptions();
+	}
+	
+	public void onStop()
+	{
+		super.onStop();
+	}
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance)
 	{
 		View v = inflater.inflate(layoutId, container, false);
 		
-//        LayoutParams lp=getDialog().getWindow().getAttributes();    
-//        lp.x=20;lp.y=130;lp.width=100;lp.height=120;lp.gravity=Gravity.TOP | Gravity.LEFT;
-//        lp.dimAmount=0;            
-//        lp.flags=LayoutParams.FLAG_LAYOUT_NO_LIMITS;
-        
 		getUIElementsFromView(v);
+        setupDismissButtons(v);
+		setupPlusMinusButtons(v);
 		setOptionLabels();
 		setLabelFonts();
 		
-        // Watch for button clicks.
-        Button applyButton = (Button)v.findViewById(R.id.applyButton);
+        return v;
+	}
+
+	
+	/*
+	 * Setup Methods
+	 */
+	private void getUIElementsFromView(View v)
+	{
+		switch(cryptoMethodId)
+		{
+			case CryptoMethods.NGRAPHS : 
+				label1 = (TextView)v.findViewById(R.id.optionset1_label);
+				editText1 = (EditText)v.findViewById(R.id.optionset1_editText);
+				break;
+			case CryptoMethods.AFFINE_KNOWN_PLAINTEXT_ATTACK : 
+				label1 = (TextView)v.findViewById(R.id.optionset2_label1);
+				editText1 = (EditText)v.findViewById(R.id.optionset2_editText);
+				label2 = (TextView)v.findViewById(R.id.optionset2_label2);
+				radioGroup = (RadioGroup)v.findViewById(R.id.optionset2_radiogroup);
+				break;
+			case CryptoMethods.AFFINE_ENCIPHER : 
+				label1 = (TextView)v.findViewById(R.id.optionset3_label1);
+				multShiftTV = (TextView)v.findViewById(R.id.optionset3_mTextView);
+				label2 = (TextView)v.findViewById(R.id.optionset3_label2);
+				addShiftTV = (TextView)v.findViewById(R.id.optionset3_aTextView);
+				break;
+			case CryptoMethods.AFFINE_DECIPHER : 
+				label1 = (TextView)v.findViewById(R.id.optionset3_label1);
+				multShiftTV = (TextView)v.findViewById(R.id.optionset3_mTextView);
+				label2 = (TextView)v.findViewById(R.id.optionset3_label2);
+				addShiftTV = (TextView)v.findViewById(R.id.optionset3_aTextView);
+				break;
+			case CryptoMethods.SPLIT_OFF_ALPHABETS : 
+				label1 = (TextView)v.findViewById(R.id.optionset1_label);
+				editText1 = (EditText)v.findViewById(R.id.optionset1_editText);
+				break;
+			case CryptoMethods.POLYMONO_CACULATOR : 
+				label1 = (TextView)v.findViewById(R.id.optionset1_label);
+				editText1 = (EditText)v.findViewById(R.id.optionset1_editText);
+				break;
+			case CryptoMethods.VIGENERE_ENCIPHER : 
+				label1 = (TextView)v.findViewById(R.id.optionset4_label);
+				editText1 = (EditText)v.findViewById(R.id.optionset4_editText);
+				break;
+			case CryptoMethods.VIGENERE_DECIPHER : 
+				label1 = (TextView)v.findViewById(R.id.optionset4_label);
+				editText1 = (EditText)v.findViewById(R.id.optionset4_editText);
+				break;
+			case CryptoMethods.AUTOKEY_CYPHERTEXT_ATTACK : 
+				label1 = (TextView)v.findViewById(R.id.optionset1_label);
+				editText1 = (EditText)v.findViewById(R.id.optionset1_editText);
+				break;
+			case CryptoMethods.AUTOKEY_PLAINTEXT_ATTACK : 
+				label1 = (TextView)v.findViewById(R.id.optionset5_label1);
+				editText1 = (EditText)v.findViewById(R.id.optionset5_editText);
+				label2 = (TextView)v.findViewById(R.id.optionset5_label2);
+				editText2 = (EditText)v.findViewById(R.id.optionset5_lowerfriedman);
+				editText3 = (EditText)v.findViewById(R.id.optionset5_upperfriedman);
+				break;
+			case CryptoMethods.AUTOKEY_DECIPHER : 
+				label1 = (TextView)v.findViewById(R.id.optionset2_label1);
+				editText1 = (EditText)v.findViewById(R.id.optionset2_editText);
+				label2 = (TextView)v.findViewById(R.id.optionset2_label2);
+				radioGroup = (RadioGroup)v.findViewById(R.id.optionset2_radiogroup);
+				break;
+			default:
+				break;
+		}
+	}
+	
+	private void setupDismissButtons(View v) {
+		Button applyButton = (Button)v.findViewById(R.id.applyButton);
         applyButton.setTypeface(Consts.TYPEFACE.FairViewRegular(getActivity()));
         applyButton.setTextSize(30);
         applyButton.setOnClickListener(new OnClickListener() {
@@ -92,8 +178,10 @@ public class OptionsDialogFragment extends DialogFragment {
 				getDialog().dismiss();
 			}
 		});
-        
-        Button plusButton = null;
+	}
+
+	private void setupPlusMinusButtons(View v) {
+		Button plusButton = null;
         Button minusButton = null;
         Button plusButton2 = null;
         Button minusButton2 = null;
@@ -168,149 +256,14 @@ public class OptionsDialogFragment extends DialogFragment {
         if(minusButton2 != null) {
         	minusButton2.setTypeface(Consts.TYPEFACE.FairViewRegular(getActivity()));
         }
-
-        return v;
-	}
-
-//	@Override
-//	protected void onCreate(Bundle savedInstanceState) {
-//		super.onCreate(savedInstanceState);
-//		setContentView(getIntent().getIntExtra("layoutId", 0));
-//		
-//		cryptoMethodId = getIntent().getIntExtra("cryptoMethodId", -1);
-//		setOptionsTitleArray();
-//		getUIElements();
-//		setOptionLabels();
-//		
-//		
-//	}
-
-	public void onStart()
-	{
-		super.onStart();
-		restoreOptions();
-	}
-	
-	public void onStop()
-	{
-		super.onStop();
-	}
-	
-	public void onNumberPickerPlusPressed(View v)
-	{
-		if( v.getId() == R.id.optionset3_aPlusButton )
-		{
-			if( Integer.parseInt(addShiftTV.getText().toString()) < 25 )
-				addShiftTV.setText( "" + (Integer.parseInt(addShiftTV.getText().toString()) + 1) );
-		}
-		else if( v.getId() == R.id.optionset3_mPlusButton )
-		{
-			if( Integer.parseInt(multShiftTV.getText().toString()) == 11 )
-				multShiftTV.setText( "15" );
-			else if( Integer.parseInt(multShiftTV.getText().toString()) < 25 )
-				multShiftTV.setText( "" + (Integer.parseInt(multShiftTV.getText().toString()) + 2) );
-		}
-		else
-		{
-			if( editText1.getText().toString().matches("") )
-				editText1.setText("1");
-			else
-				editText1.setText( "" + (Integer.parseInt(editText1.getText().toString()) + 1) );
-		}
-	}
-	
-	public void onNumberPickerMinusPressed(View v)
-	{
-		if(v.getId() == R.id.optionset3_aMinusButton)
-		{
-			if( Integer.parseInt(addShiftTV.getText().toString()) > 0 )
-				addShiftTV.setText( "" + (Integer.parseInt(addShiftTV.getText().toString()) - 1) );
-		}
-		else if( v.getId() == R.id.optionset3_mMinusButton )
-		{
-			if( Integer.parseInt(multShiftTV.getText().toString()) == 15 )
-				multShiftTV.setText( "11" );
-			else if( Integer.parseInt(multShiftTV.getText().toString()) > 1 )
-				multShiftTV.setText( "" + (Integer.parseInt(multShiftTV.getText().toString()) - 2) );
-		}
-		else
-		{
-			if( editText1.getText().toString().matches("") )
-				editText1.setText("1");
-			else if( Integer.parseInt(editText1.getText().toString()) > 1 )
-				editText1.setText( "" + (Integer.parseInt(editText1.getText().toString()) -1) );
-		}
-	}
-	
-	
-	private void getUIElementsFromView(View v)
-	{
-		switch(cryptoMethodId)
-		{
-			case CryptoMethods.NGRAPHS : 
-				label1 = (TextView)v.findViewById(R.id.optionset1_label);
-				editText1 = (EditText)v.findViewById(R.id.optionset1_editText);
-				break;
-			case CryptoMethods.AFFINE_KNOWN_PLAINTEXT_ATTACK : 
-				label1 = (TextView)v.findViewById(R.id.optionset2_label1);
-				editText1 = (EditText)v.findViewById(R.id.optionset2_editText);
-				label2 = (TextView)v.findViewById(R.id.optionset2_label2);
-				radioGroup = (RadioGroup)v.findViewById(R.id.optionset2_radiogroup);
-				break;
-			case CryptoMethods.AFFINE_ENCIPHER : 
-				label1 = (TextView)v.findViewById(R.id.optionset3_label1);
-				multShiftTV = (TextView)v.findViewById(R.id.optionset3_mTextView);
-				label2 = (TextView)v.findViewById(R.id.optionset3_label2);
-				addShiftTV = (TextView)v.findViewById(R.id.optionset3_aTextView);
-				break;
-			case CryptoMethods.AFFINE_DECIPHER : 
-				label1 = (TextView)v.findViewById(R.id.optionset3_label1);
-				multShiftTV = (TextView)v.findViewById(R.id.optionset3_mTextView);
-				label2 = (TextView)v.findViewById(R.id.optionset3_label2);
-				addShiftTV = (TextView)v.findViewById(R.id.optionset3_aTextView);
-				break;
-			case CryptoMethods.SPLIT_OFF_ALPHABETS : 
-				label1 = (TextView)v.findViewById(R.id.optionset1_label);
-				editText1 = (EditText)v.findViewById(R.id.optionset1_editText);
-				break;
-			case CryptoMethods.POLYMONO_CACULATOR : 
-				label1 = (TextView)v.findViewById(R.id.optionset1_label);
-				editText1 = (EditText)v.findViewById(R.id.optionset1_editText);
-				break;
-			case CryptoMethods.VIGENERE_ENCIPHER : 
-				label1 = (TextView)v.findViewById(R.id.optionset4_label);
-				editText1 = (EditText)v.findViewById(R.id.optionset4_editText);
-				break;
-			case CryptoMethods.VIGENERE_DECIPHER : 
-				label1 = (TextView)v.findViewById(R.id.optionset4_label);
-				editText1 = (EditText)v.findViewById(R.id.optionset4_editText);
-				break;
-			case CryptoMethods.AUTOKEY_CYPHERTEXT_ATTACK : 
-				label1 = (TextView)v.findViewById(R.id.optionset1_label);
-				editText1 = (EditText)v.findViewById(R.id.optionset1_editText);
-				break;
-			case CryptoMethods.AUTOKEY_PLAINTEXT_ATTACK : 
-				label1 = (TextView)v.findViewById(R.id.optionset5_label1);
-				editText1 = (EditText)v.findViewById(R.id.optionset5_editText);
-				label2 = (TextView)v.findViewById(R.id.optionset5_label2);
-				editText2 = (EditText)v.findViewById(R.id.optionset5_lowerfriedman);
-				editText3 = (EditText)v.findViewById(R.id.optionset5_upperfriedman);
-				break;
-			case CryptoMethods.AUTOKEY_DECIPHER : 
-				label1 = (TextView)v.findViewById(R.id.optionset2_label1);
-				editText1 = (EditText)v.findViewById(R.id.optionset2_editText);
-				label2 = (TextView)v.findViewById(R.id.optionset2_label2);
-				radioGroup = (RadioGroup)v.findViewById(R.id.optionset2_radiogroup);
-				break;
-			default:
-				break;
-		}
 	}
 	
 	private void setOptionLabels()
 	{
-		label1.setText(optionTitles[0]);
-		if(null != label2)
+		if(label1 != null) {
+			label1.setText(optionTitles[0]);
+		}
+		if(label2 != null)
 		{
 			label2.setText(optionTitles[1]);
 			
@@ -320,44 +273,55 @@ public class OptionsDialogFragment extends DialogFragment {
 	}
 	
 	private void setLabelFonts() {
+		
+		Typeface fairviewRegular = Consts.TYPEFACE.FairViewRegular(getActivity());
+		Typeface fairviewSmallcaps = Consts.TYPEFACE.FairViewSmallCaps(getActivity());
+		
 		if(label1 != null) {
-			label1.setTypeface(Consts.TYPEFACE.FairViewSmallCaps(getActivity()));
+			label1.setTypeface(fairviewSmallcaps);
 			label1.setTextSize(28);
 		}
+		
 		if(label2 != null) {
-			label2.setTypeface(Consts.TYPEFACE.FairViewSmallCaps(getActivity()));
+			label2.setTypeface(fairviewSmallcaps);
 			label2.setTextSize(28);
 		}
+		
 		if(editText1 != null) {
-			editText1.setTypeface(Consts.TYPEFACE.FairViewRegular(getActivity()));
+			editText1.setTypeface(fairviewRegular);
 			if( editText1.getInputType() != InputType.TYPE_CLASS_NUMBER) {
 				editText1.setTextSize(28);
 			}
 		}
+		
 		if(editText2 != null) {
-			editText2.setTypeface(Consts.TYPEFACE.FairViewRegular(getActivity()));
+			editText2.setTypeface(fairviewRegular);
 			if( editText2.getInputType() != InputType.TYPE_CLASS_NUMBER) {
 				editText2.setTextSize(28);
 			}
 		}
+		
 		if(editText3 != null) {
-			editText3.setTypeface(Consts.TYPEFACE.FairViewRegular(getActivity()));
+			editText3.setTypeface(fairviewRegular);
 			if( editText3.getInputType() != InputType.TYPE_CLASS_NUMBER) {
 				editText3.setTextSize(28);
 			}
 		}
+		
 		if(multShiftTV != null) {
-			multShiftTV.setTypeface(Consts.TYPEFACE.FairViewRegular(getActivity()));
+			multShiftTV.setTypeface(fairviewRegular);
 		}
+		
 		if(addShiftTV != null) {
-			addShiftTV.setTypeface(Consts.TYPEFACE.FairViewRegular(getActivity()));
+			addShiftTV.setTypeface(fairviewRegular);
 		}
+		
 		if(radioGroup != null) {
 			RadioButton btn1 = (RadioButton)radioGroup.getChildAt(0);
-			btn1.setTypeface(Consts.TYPEFACE.FairViewSmallCaps(getActivity()));
+			btn1.setTypeface(fairviewSmallcaps);
 			btn1.setTextSize(28);
 			RadioButton btn2 = (RadioButton)radioGroup.getChildAt(1);
-			btn2.setTypeface(Consts.TYPEFACE.FairViewSmallCaps(getActivity()));
+			btn2.setTypeface(fairviewSmallcaps);
 			btn2.setTextSize(28);
 		}
 	}
@@ -393,6 +357,9 @@ public class OptionsDialogFragment extends DialogFragment {
 		}
 	}
 	
+	/*
+	 * Option persistance methods
+	 */
 	private void restoreOptions()
 	{
 		// Note the line below does NOT retrieve preferences as committed by editor, editor gives default name of class opened from (MainActivity)
@@ -510,6 +477,60 @@ public class OptionsDialogFragment extends DialogFragment {
 		editor.commit();
 	}
 	
+	
+	/*
+	 * Picker Button Methods
+	 */
+	public void onNumberPickerPlusPressed(View v)
+	{
+		if( v.getId() == R.id.optionset3_aPlusButton )
+		{
+			if( Integer.parseInt(addShiftTV.getText().toString()) < 25 )
+				addShiftTV.setText( "" + (Integer.parseInt(addShiftTV.getText().toString()) + 1) );
+		}
+		else if( v.getId() == R.id.optionset3_mPlusButton )
+		{
+			if( Integer.parseInt(multShiftTV.getText().toString()) == 11 )
+				multShiftTV.setText( "15" );
+			else if( Integer.parseInt(multShiftTV.getText().toString()) < 25 )
+				multShiftTV.setText( "" + (Integer.parseInt(multShiftTV.getText().toString()) + 2) );
+		}
+		else
+		{
+			if( editText1.getText().toString().matches("") )
+				editText1.setText("1");
+			else
+				editText1.setText( "" + (Integer.parseInt(editText1.getText().toString()) + 1) );
+		}
+	}
+	
+	public void onNumberPickerMinusPressed(View v)
+	{
+		if(v.getId() == R.id.optionset3_aMinusButton)
+		{
+			if( Integer.parseInt(addShiftTV.getText().toString()) > 0 )
+				addShiftTV.setText( "" + (Integer.parseInt(addShiftTV.getText().toString()) - 1) );
+		}
+		else if( v.getId() == R.id.optionset3_mMinusButton )
+		{
+			if( Integer.parseInt(multShiftTV.getText().toString()) == 15 )
+				multShiftTV.setText( "11" );
+			else if( Integer.parseInt(multShiftTV.getText().toString()) > 1 )
+				multShiftTV.setText( "" + (Integer.parseInt(multShiftTV.getText().toString()) - 2) );
+		}
+		else
+		{
+			if( editText1.getText().toString().matches("") )
+				editText1.setText("1");
+			else if( Integer.parseInt(editText1.getText().toString()) > 1 )
+				editText1.setText( "" + (Integer.parseInt(editText1.getText().toString()) -1) );
+		}
+	}
+	
+	
+	/*
+	 * Other helpers
+	 */
 	private boolean checkForNullFields()
 	{
 		Animation shake = AnimationUtils.loadAnimation(getActivity(), R.anim.shake);

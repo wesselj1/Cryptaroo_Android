@@ -2,6 +2,8 @@ package com.joeywessel.cryptaroo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.widget.TextView;
@@ -17,10 +19,15 @@ public class AboutActivity extends SherlockActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_about);
 		
+		SpannableString s = new SpannableString("CRYPTAROO");
+		s.setSpan(new TypefaceSpan(this, "fairview_regular"), 0, s.length(),
+		        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		
 		// Allow back navigation on actionbar
   		ActionBar actionBar = getSupportActionBar();
   	    actionBar.setDisplayHomeAsUpEnabled(true);
   	    actionBar.setHomeButtonEnabled(true);
+  	    actionBar.setTitle(s);
 		
 		TextView aboutView = (TextView)findViewById(R.id.about_textView);
 		aboutView.setMovementMethod(new ScrollingMovementMethod());

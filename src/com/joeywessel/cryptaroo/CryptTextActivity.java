@@ -2,7 +2,6 @@ package com.joeywessel.cryptaroo;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
@@ -14,12 +13,8 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,7 +33,6 @@ public class CryptTextActivity extends SherlockFragmentActivity {
 	TextView outputTextField;
 	Context context;
 	
-//	int cryptoMethodId;
 	String[] optionTitles;
 	EditText editText1;
 	EditText editText2;
@@ -60,15 +54,19 @@ public class CryptTextActivity extends SherlockFragmentActivity {
   		ActionBar actionBar = getSupportActionBar();
   	    actionBar.setDisplayHomeAsUpEnabled(true);
   	    actionBar.setHomeButtonEnabled(true);
-
-		SpannableString s = new SpannableString("CRYPTAROO");
+  	    
+  	    cryptoMethodId = getIntent().getIntExtra("cryptoMethodId", 0);
+  	    
+  	    String[] methodNames = getResources().getStringArray(R.array.crypto_methods);
+		SpannableString s = new SpannableString(methodNames[cryptoMethodId]);
 		s.setSpan(new TypefaceSpan(this, "fairview_regular"), 0, s.length(),
 				Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//  	    TextView title = (TextView)actionBar.getCustomView().findViewById(R.id.title);
+//		title.setText(methodNames[cryptoMethodId]);
+		
 		actionBar.setTitle(s);
 		
 		context = this;
-		
-		cryptoMethodId = getIntent().getIntExtra("cryptoMethodId", 0);
 		
 		optionsButton = (TextView)findViewById(R.id.optionsButton);
 		optionsButton.setTypeface(Consts.TYPEFACE.FairViewRegular(this));
@@ -103,10 +101,8 @@ public class CryptTextActivity extends SherlockFragmentActivity {
 	
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-    	Intent helpIntent = new Intent(this, HelpActivity.class);
     	
         menu.add("Help")
-        	.setIntent(helpIntent)
             .setIcon(R.drawable.ic_menu_help)
             .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
 
@@ -119,16 +115,60 @@ public class CryptTextActivity extends SherlockFragmentActivity {
         	finish();
             return true;
         } else {
-        	Intent intent = item.getIntent();
-        	startActivity(intent);
+        	showHelpDialog();
         }
         return true;
     }
 	
-	public void launchHelpActivity()
+	public void showHelpDialog()
 	{
-		Intent aboutIntent = new Intent(this, HelpActivity.class);
-		startActivity(aboutIntent);
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		Fragment prev = getSupportFragmentManager().findFragmentByTag("optionsDialog");
+		if( prev != null )
+		{
+			if( prev.getTag() != "optionsDialog" )
+				ft.remove(prev);
+		}
+		
+		if( prev == null ^ (prev != null && prev.getTag() != "optionsDialog") )
+		{
+			ft.addToBackStack(null);
+			HelpDialogFragment newFragment = HelpDialogFragment.newInstance(cryptoMethodId);
+			
+			if( isTablet() )
+				newFragment.show(ft, "optionsDialog");
+			else
+			{
+				newFragment.show(getSupportFragmentManager(), "optionsDialog");
+			}
+		}
+	}
+	
+	void showOptionsDialog(int optionsLayoutId)
+	{
+//		if( isTablet() )
+		{
+			FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+			Fragment prev = getSupportFragmentManager().findFragmentByTag("optionsDialog");
+			if( prev != null )
+			{
+				if( prev.getTag() != "optionsDialog" )
+					ft.remove(prev);
+			}
+			
+			if( prev == null ^ (prev != null && prev.getTag() != "optionsDialog") )
+			{
+				ft.addToBackStack(null);
+				OptionsDialogFragment newFragment = OptionsDialogFragment.newInstance(cryptoMethodId, optionsLayoutId);
+				
+				if( isTablet() )
+					newFragment.show(ft, "optionsDialog");
+				else
+				{
+					newFragment.show(getSupportFragmentManager(), "optionsDialog");
+				}
+			}
+		}
 	}
 	
 	protected void onResume()
@@ -551,45 +591,6 @@ public class CryptTextActivity extends SherlockFragmentActivity {
 			return resultStr;
 		}
 	}
-	
-	void showOptionsDialog(int optionsLayoutId)
-	{
-//		if( isTablet() )
-		{
-			FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-			Fragment prev = getSupportFragmentManager().findFragmentByTag("optionsDialog");
-			if( prev != null )
-			{
-				if( prev.getTag() != "optionsDialog" )
-					ft.remove(prev);
-			}
-			
-			if( prev == null ^ (prev != null && prev.getTag() != "optionsDialog") )
-			{
-				ft.addToBackStack(null);
-				OptionsDialogFragment newFragment = OptionsDialogFragment.newInstance(cryptoMethodId, optionsLayoutId);
-				
-				if( isTablet() )
-					newFragment.show(ft, "optionsDialog");
-				else
-				{
-					newFragment.show(getSupportFragmentManager(), "optionsDialog");
-				}
-			}
-		}
-	}
-	
-//	public void applySettingsAndDismissDialog()
-//	{
-//		Toast.makeText(this, "Applying new settings", Toast.LENGTH_SHORT).show();
-//		OptionsDialogFragment frag = (OptionsDialogFragment)getSupportFragmentManager().findFragmentByTag("optionsDialog");
-//		frag.
-//	}
-//	
-//	public void dismissDialog()
-//	{
-//		Toast.makeText(this, "Did not apply new settings", Toast.LENGTH_SHORT).show();	
-//	}
 	
 	public boolean isTablet() {
 	    try {

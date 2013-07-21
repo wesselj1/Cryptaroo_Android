@@ -23,12 +23,13 @@
             android:background="@android:color/white"
             android:gravity="top"
             android:hint="INPUT TEXT"
+            android:textColorHint="@color/dedede_white"
             android:inputType="textNoSuggestions|textMultiLine"
             android:paddingBottom="0dp"
             android:paddingLeft="3dp"
             android:paddingRight="3dp"
             android:paddingTop="0dp"
-            android:textColor="@android:color/black"
+            android:textColor="@color/black_haze"
             android:textSize="18sp" />
 
 	    <View
@@ -79,12 +80,13 @@
             android:background="@android:color/white"
             android:gravity="top"
             android:hint="OUTPUT TEXT"
+            android:textColorHint="@color/dedede_white"
             android:paddingBottom="0dp"
             android:paddingLeft="3dp"
             android:paddingRight="3dp"
             android:paddingTop="0dp"
             android:scrollbars="vertical"
-            android:textColor="@android:color/black"
+            android:textColor="@color/black_haze"
             android:textIsSelectable="true"
             android:textSize="18sp" />
         
@@ -118,37 +120,37 @@
         android:layout_weight="1"
         android:orientation="horizontal" >
 
-        <TextView
+        <Button
             android:id="@+id/optionsButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".50"
-            android:background="@drawable/picker_button"
+            android:background="@drawable/button_selector"
             android:clickable="true"
             android:gravity="center"
             android:onClick="onSetOptionsPressed"
             android:text="SET OPTIONS"
             android:textSize="16sp"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/wool_white" />
 
         <View
             android:id="@+id/buttonDivider"
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="#A07031" />
+            android:background="@color/divider_grey" />
         
-        <TextView
+        <Button
             android:id="@+id/actionButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".50"
-            android:background="@drawable/picker_button"
+            android:background="@drawable/button_selector"
             android:clickable="true"
             android:gravity="center"
             android:onClick="onActionButtonPressed"
             android:text="Decrypt"
             android:textSize="16sp"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/wool_white" />
     </LinearLayout>
 
 </LinearLayout>

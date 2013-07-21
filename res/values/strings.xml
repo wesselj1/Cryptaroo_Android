@@ -61,7 +61,7 @@
         <item>Affine Encipher will perform an affine encryption on a given text using the user-specified multiplicative and additive shifts.</item>
         <item>Affine Decipher will perform an affine decryption of a given text using the user-specified multiplicative and additive shifts.</item>
         <item>Split Off Alphabets will strip off the user-defined number of alphabets from a given text.</item>
-        <item>IDKMYBFFJILL</item>
+        <item>Poly/Mono Calculator will assist in determining if a ciphertext was enciphered using one alphabet (monoalphabetic) or many alphabets (polyalphabetic).</item>
         <item>Vigenere Encipher will encrypt a given text using a Vigenere cipher with the keyword provided.</item>
         <item>Vigenere Decipher will decrypt a given Vigenere ciphertext using the keyword provided.</item>
         <item>Autokey Cyphertext Attack will calculate the Friedman value of the ciphertext string assuming the given the keyword length.</item>

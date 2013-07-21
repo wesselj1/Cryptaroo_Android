@@ -35,7 +35,8 @@
             android:textSize="38sp"
             android:padding="2dp"
             android:gravity="center_vertical"
-            android:background="#EEEEEE"/>
+            android:background="#EEEEEE"
+            android:textColor="@color/black_haze"/>
         
         <TextView
 	        android:id="@+id/lblMod"
@@ -58,7 +59,8 @@
             android:textSize="38sp"
             android:padding="2dp"
             android:gravity="center_vertical"
-            android:background="#EEEEEE"/>
+            android:background="#EEEEEE"
+            android:textColor="@color/black_haze"/>
         
         
        	<TextView
@@ -80,7 +82,7 @@
             android:layout_marginRight="7dp"
             android:layout_marginBottom="7dp"
             android:textSize="38sp"
-            android:textColor="@android:color/black"
+            android:textColor="@color/black_haze"
             android:padding="2dp"
             android:layout_gravity="right"
             android:gravity="center_vertical"
@@ -105,7 +107,7 @@
             android:layout_marginRight="7dp"
             android:layout_marginBottom="7dp"
             android:textSize="38sp"
-            android:textColor="@android:color/black"
+            android:textColor="@color/black_haze"
             android:padding="2dp"
             android:layout_gravity="right"
             android:gravity="center_vertical"
@@ -118,10 +120,10 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/picker_button"
+        android:background="@drawable/button_selector"
         android:onClick="onCalculateButtonPressed"
         android:text="Calculate"
         android:textSize="30sp"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/wool_white" />
 
 </LinearLayout>

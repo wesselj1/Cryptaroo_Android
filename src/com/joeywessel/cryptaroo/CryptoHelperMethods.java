@@ -198,7 +198,7 @@ public class CryptoHelperMethods {
         resultString += "w = 02 = II\n";
         resultString += "x =\n";
         resultString += "y = 02 = II\n";
-        resultString += "z =\n";
+        resultString += "z =";
         
         return resultString;
 	}
@@ -268,6 +268,10 @@ public class CryptoHelperMethods {
             resultString += "\n";
         }
         
+        if( resultString.equalsIgnoreCase("\n") || resultString.equalsIgnoreCase("") ) {
+        	resultString = "No BiGraphs";
+        }
+        
         return resultString;
 	}
 	
@@ -309,6 +313,10 @@ public class CryptoHelperMethods {
                     resultString += ",";
             }
             resultString += "\n";
+        }
+        
+        if( resultString.equalsIgnoreCase("\n") || resultString.equalsIgnoreCase("") ) {
+        	resultString = "No TriGraphs";
         }
         
         return resultString;
@@ -354,6 +362,10 @@ public class CryptoHelperMethods {
             }
             resultString += "\n";
         }  
+        
+        if( resultString.equalsIgnoreCase("\n") || resultString.equalsIgnoreCase("") ) {
+        	resultString = "No graphs of size " + lenghtOfNgraphs;
+        }
         
         return resultString;
 	}
@@ -576,7 +588,7 @@ public class CryptoHelperMethods {
         double array[] = new double[256];
         double friedman = 0;
         int spinnerValue = keywordSize;
-        String resultString = ".065 = Monoalphabetic, .038 means polyalphabetic.  I'll add some bar graphs in the future.\n\n";
+        String resultString = ".065 = Monoalphabetic, .038 means polyalphabetic.\n\n";
         
         for (int z = 0; z < spinnerValue; z++)
         {

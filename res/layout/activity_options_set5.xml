@@ -34,7 +34,8 @@
             android:inputType="number"
             android:maxLines="1"
             android:padding="2dp"
-            android:textSize="38sp" />
+            android:textSize="38sp"
+            android:textColor="@color/black_haze" />
 
         <Button
             android:id="@+id/optionset5_minusBtn"
@@ -46,7 +47,7 @@
             android:layout_weight="0.25"
             android:background="@drawable/picker_button"
             android:text="-"
-            android:textColor="#222222"
+            android:textColor="@color/black_haze"
             android:textSize="38sp" />
 
         <Button
@@ -57,7 +58,7 @@
             android:layout_weight="0.25"
             android:background="@drawable/picker_button"
             android:text="+"
-            android:textColor="#222222"
+            android:textColor="@color/black_haze"
             android:textSize="38sp" />
     </LinearLayout>
 
@@ -90,7 +91,8 @@
             android:inputType="number"
             android:maxLines="1"
             android:padding="2dp"
-            android:textSize="38sp" />
+            android:textSize="38sp"
+            android:textColor="@color/black_haze" />
 
         <EditText
             android:id="@+id/optionset5_upperfriedman"
@@ -105,7 +107,8 @@
             android:inputType="number"
             android:maxLines="1"
             android:padding="2dp"
-            android:textSize="38sp" />
+            android:textSize="38sp"
+            android:textColor="@color/black_haze" />
     </LinearLayout>
 
     <LinearLayout
@@ -122,13 +125,14 @@
             android:background="@drawable/button_selector"
             android:gravity="center"
             android:text="CANCEL"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:textColor="@color/wool_white" />
         
         <View
 	        android:id="@+id/buttonDivider"
 	        android:layout_width="1dp"
 	        android:layout_height="fill_parent"
-	        android:background="#999999" />
+	        android:background="@color/divider_grey" />
 
         <Button
             android:id="@+id/applyButton"
@@ -138,7 +142,8 @@
             android:background="@drawable/button_selector"
             android:gravity="center"
             android:text="APPLY"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:textColor="@color/wool_white" />
     </LinearLayout>
 
 </LinearLayout>

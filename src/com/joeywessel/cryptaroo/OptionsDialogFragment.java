@@ -159,7 +159,6 @@ public class OptionsDialogFragment extends DialogFragment {
         applyButton.setTextSize(30);
         applyButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                // When button is clicked, call up to owning activity.
 				if( !checkForNullFields() )
 				{
 	            	saveOptions();
@@ -284,7 +283,11 @@ public class OptionsDialogFragment extends DialogFragment {
 		
 		if(label2 != null) {
 			label2.setTypeface(fairviewSmallcaps);
-			label2.setTextSize(28);
+			if( cryptoMethodId != CryptoMethods.AUTOKEY_DECIPHER ) {
+				label2.setTextSize(28);
+			} else {
+				label2.setTextSize(22);
+			}
 		}
 		
 		if(editText1 != null) {
@@ -558,7 +561,7 @@ public class OptionsDialogFragment extends DialogFragment {
 			if( isNull )
 				Toast.makeText(getActivity(), "Please fill in the fields", Toast.LENGTH_SHORT).show();
 			
-			return true;
+			return isNull;
 			
 		}
 		if( cryptoMethodId == CryptoMethods.NGRAPHS || cryptoMethodId == CryptoMethods.SPLIT_OFF_ALPHABETS || 

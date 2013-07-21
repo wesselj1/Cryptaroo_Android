@@ -9,11 +9,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.text.ClipboardManager;
+import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -27,8 +30,8 @@ import com.actionbarsherlock.view.MenuItem;
 public class CryptTextActivity extends SherlockFragmentActivity {
 	
 	int cryptoMethodId;
-	TextView optionsButton;
-	TextView actionButton;
+	Button optionsButton;
+	Button actionButton;
 	EditText inputTextField;
 	TextView outputTextField;
 	Context context;
@@ -68,17 +71,20 @@ public class CryptTextActivity extends SherlockFragmentActivity {
 		
 		context = this;
 		
-		optionsButton = (TextView)findViewById(R.id.optionsButton);
+		optionsButton = (Button)findViewById(R.id.optionsButton);
 		optionsButton.setTypeface(Consts.TYPEFACE.FairViewRegular(this));
 		optionsButton.setTextSize(30);
-		actionButton = (TextView)findViewById(R.id.actionButton);
+		actionButton = (Button)findViewById(R.id.actionButton);
 		actionButton.setTypeface(Consts.TYPEFACE.FairViewRegular(this));
 		actionButton.setTextSize(30);
+		actionButton.setEnabled(false);
+		actionButton.setTextColor(getResources().getColor(R.color.disabled_button_text));
 		inputTextField = (EditText)findViewById(R.id.inputText);
 		outputTextField = (TextView)findViewById(R.id.outputText);
 		outputTextField.setMovementMethod(new ScrollingMovementMethod());
 		
 		inputTextField.setTypeface(Typeface.MONOSPACE);
+		inputTextField.addTextChangedListener(new NullTextWatcher());
 		outputTextField.setTypeface(Typeface.MONOSPACE);
 		
 		outputTextField.setOnLongClickListener(new View.OnLongClickListener() {
@@ -95,8 +101,10 @@ public class CryptTextActivity extends SherlockFragmentActivity {
 		setActionButtonTitle();
 		
 		if( cryptoMethodId == CryptoMethods.FREQUENCY_COUNT || cryptoMethodId == CryptoMethods.RUN_THE_ALPHABET || 
-				cryptoMethodId == CryptoMethods.BIGRAPHS || cryptoMethodId == CryptoMethods.TRIGRAPHS)
+				cryptoMethodId == CryptoMethods.BIGRAPHS || cryptoMethodId == CryptoMethods.TRIGRAPHS) {
 			optionsButton.setEnabled(false);
+			optionsButton.setTextColor(getResources().getColor(R.color.disabled_button_text));
+		}
 	}
 	
     @Override
@@ -607,5 +615,28 @@ public class CryptTextActivity extends SherlockFragmentActivity {
 	    }
 
 	} 
+	
+	private class NullTextWatcher implements TextWatcher {
+
+		@Override
+		public void afterTextChanged(Editable s) {
+			if( s != null && s.length() > 0 ) {
+				actionButton.setEnabled(true);
+				actionButton.setTextColor(getResources().getColor(R.color.wool_white));
+			} else {
+				actionButton.setEnabled(false);
+				actionButton.setTextColor(getResources().getColor(R.color.disabled_button_text));
+			}
+		}
+
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count, int after) {	
+		}
+
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before, int count) {
+		}
+		
+	}
 }
 

@@ -18,6 +18,7 @@ public class BaseActivity extends SherlockFragmentActivity {
 		
 		ab.setDisplayShowCustomEnabled(true);
 		ab.setDisplayShowTitleEnabled(false);
+		ab.setIcon(R.drawable.ic_home);
 
 		LayoutInflater inflator = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View v = inflator.inflate(R.layout.title_vew, null);

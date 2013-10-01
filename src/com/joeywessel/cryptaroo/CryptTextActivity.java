@@ -57,6 +57,7 @@ public class CryptTextActivity extends SherlockFragmentActivity {
   		ActionBar actionBar = getSupportActionBar();
   	    actionBar.setDisplayHomeAsUpEnabled(true);
   	    actionBar.setHomeButtonEnabled(true);
+  	    actionBar.setIcon(R.drawable.ic_home);
   	    
   	    cryptoMethodId = getIntent().getIntExtra("cryptoMethodId", 0);
   	    

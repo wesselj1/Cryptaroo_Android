@@ -35,6 +35,7 @@ public class MainActivity extends SherlockActivity {
 		
 		ActionBar actionbar = getSupportActionBar();
 		actionbar.setTitle(s);
+		actionbar.setIcon(R.drawable.ic_home);
 		
 		listView = (ListView)findViewById(R.id.mainMenuListView);
 		listViewAdapter = new MenuListViewAdapter(this, R.layout.list_item, R.id.primaryTextView, getResources().getStringArray(R.array.crypto_methods));

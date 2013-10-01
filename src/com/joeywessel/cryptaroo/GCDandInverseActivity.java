@@ -34,6 +34,7 @@ public class GCDandInverseActivity extends SherlockActivity {
   		ActionBar actionBar = getSupportActionBar();
   	    actionBar.setDisplayHomeAsUpEnabled(true);
   	    actionBar.setHomeButtonEnabled(true);
+  	    actionBar.setIcon(R.drawable.ic_home);
   	    actionBar.setTitle(s);
 		
 		inverseOfField = (EditText)findViewById(R.id.gcdandinverse_inverseoffield);

@@ -52,7 +52,7 @@
     <string name="title_activity_help">HelpActivity</string>
 
     <string-array name="help_info">
-        <item>Given a set of plaintext or ciphertext Frequency Count will give a count of the number occurences for each unique letter in the text. Frequency Count will also list the 1, 2, and 3 letter words, the all the beginning and ending letters of words, a list of double letters found, and the typical frequency count for the Engish language.</item>
+        <item>Given a set of plaintext or ciphertext Frequency Count will give a count of the number occurences for each unique letter in the text. Frequency Count will also list the 1, 2, and 3 letter words, the all the beginning and ending letters of words, a list of double letters found, and the typical frequency count for the English language.</item>
         <item>Run The Alphabet will perform all 25 possible Caesar shifts on the given plaintext or ciphertext.</item>
         <item>BiGraphs will give all the bigraphs found in the given ciphertext or plaintext along with their positions in the text.</item>
         <item>TriGraphs will give all the trigaphs found in the given ciphertext or plaintext along with their positions in the text.</item>

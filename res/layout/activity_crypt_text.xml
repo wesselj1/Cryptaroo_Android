@@ -12,14 +12,23 @@
         android:layout_height="0dp"
         android:layout_weight="2" >
 
-        <EditText
-            android:id="@+id/inputText"
+        <ScrollView
+            android:id="@+id/inputTextScrollView"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:layout_marginBottom="0dp"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2dp">
+        
+        <EditText
+            android:id="@+id/inputText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
             android:background="@android:color/white"
             android:gravity="top"
             android:hint="INPUT TEXT"
@@ -31,12 +40,14 @@
             android:paddingTop="0dp"
             android:textColor="@color/black_haze"
             android:textSize="18sp" />
+        
+        </ScrollView>
 
 	    <View
             android:id="@+id/tv1FadingEdgeTop"
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:layout_above="@+id/inputText"
+            android:layout_above="@+id/inputTextScrollView"
             android:layout_marginBottom="-11dp"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
@@ -47,7 +58,7 @@
             android:id="@+id/tv1FadingEdgeBottom"
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:layout_below="@+id/inputText"
+            android:layout_below="@+id/inputTextScrollView"
             android:layout_marginBottom="0dp"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
@@ -66,17 +77,26 @@
         android:id="@+id/outputTextLayout"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="7" >
+        android:layout_weight="7"
+        android:layout_below="@+id/inputTextLayout" >
+        
+        <ScrollView
+            android:id="@+id/outputTextScrollView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="2dp">
 
         <TextView
             android:id="@+id/outputText"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/inputText"
-            android:layout_marginBottom="1dp"
+            android:layout_marginBottom="0dp"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="0dp"
             android:background="@android:color/white"
             android:gravity="top"
             android:hint="OUTPUT TEXT"
@@ -85,16 +105,17 @@
             android:paddingLeft="3dp"
             android:paddingRight="3dp"
             android:paddingTop="0dp"
-            android:scrollbars="vertical"
             android:textColor="@color/black_haze"
             android:textIsSelectable="true"
             android:textSize="18sp" />
         
+        </ScrollView>
+        
         <View
-            android:id="@+id/tv1FadingEdgeTop"
+            android:id="@+id/tv1FadingEdgeTop2"
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:layout_above="@+id/outputText"
+            android:layout_above="@+id/outputTextScrollView"
             android:layout_marginBottom="-11dp"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
@@ -102,10 +123,10 @@
             android:background="@drawable/textview_top_gradient" />
 
         <View
-            android:id="@+id/tv1FadingEdgeBottom"
+            android:id="@+id/tv1FadingEdgeBottom2"
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:layout_below="@+id/outputText"
+            android:layout_below="@+id/outputTextScrollView"
             android:layout_marginBottom="0dp"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"

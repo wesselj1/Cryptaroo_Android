@@ -1,0 +1,176 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:background="@android:color/white" >
+
+    <RelativeLayout
+        android:id="@+id/inputTextLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" >
+
+        <ScrollView
+            android:id="@+id/inputTextScrollView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="2dp">
+        
+        <EditText
+            android:id="@+id/inputText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@android:color/white"
+            android:gravity="top"
+            android:hint="INPUT TEXT"
+            android:textColorHint="@color/dedede_white"
+            android:inputType="textNoSuggestions|textMultiLine"
+            android:paddingBottom="0dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:paddingTop="0dp"
+            android:textColor="@color/black_haze"
+            android:textSize="18sp" />
+        
+        </ScrollView>
+
+	    <View
+            android:id="@+id/tv1FadingEdgeTop"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_above="@+id/inputTextScrollView"
+            android:layout_marginBottom="-11dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/textview_top_gradient" />
+
+        <View
+            android:id="@+id/tv1FadingEdgeBottom"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@+id/inputTextScrollView"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="-11dp"
+            android:background="@drawable/textview_bottom_gradient" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/list_divider" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/outputTextLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:layout_below="@+id/inputTextLayout" >
+        
+        <ScrollView
+            android:id="@+id/outputTextScrollView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="2dp">
+
+        <TextView
+            android:id="@+id/outputText"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@android:color/white"
+            android:gravity="top"
+            android:hint="OUTPUT TEXT"
+            android:textColorHint="@color/dedede_white"
+            android:paddingBottom="0dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:paddingTop="0dp"
+            android:textColor="@color/black_haze"
+            android:textIsSelectable="true"
+            android:textSize="18sp" />
+        
+        </ScrollView>
+        
+        <View
+            android:id="@+id/tv1FadingEdgeTop2"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_above="@+id/outputTextScrollView"
+            android:layout_marginBottom="-11dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/textview_top_gradient" />
+
+        <View
+            android:id="@+id/tv1FadingEdgeBottom2"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@+id/outputTextScrollView"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="-11dp"
+            android:background="@drawable/textview_bottom_gradient" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonBar"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/optionsButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".50"
+            android:background="@drawable/button_selector"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onSetOptionsPressed"
+            android:text="SET OPTIONS"
+            android:textSize="16sp"
+            android:textColor="@color/wool_white" />
+
+        <View
+            android:id="@+id/buttonDivider"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/divider_grey" />
+        
+        <Button
+            android:id="@+id/actionButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".50"
+            android:background="@drawable/button_selector"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onActionButtonPressed"
+            android:text="Decrypt"
+            android:textSize="16sp"
+            android:textColor="@color/wool_white" />
+    </LinearLayout>
+
+</LinearLayout>
